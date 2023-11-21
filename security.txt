@@ -1,0 +1,150 @@
+# Main Program
+if __name__ == "__main__":
+    # Create instances of Website, User, and Incident classes
+    website = Website()
+    user = User()
+    incident = Incident()
+    
+    class User:
+    def register(self, username, password, email):
+        # Implementation for user registration
+        pass
+    
+    def login(self, username, password):
+        # Implementation for user login
+        pass
+
+class Incident:
+    def report_incident(self, user, description, location):
+        # Implementation for reporting incidents
+        pass
+    
+    def update_status(self, incident_id, status):
+        # Implementation for updating incident status
+        pass
+
+class Administrator(User):
+    def update_incident_status(self, incident_id, status):
+        # Implementation for administrators to update incident status
+        pass
+# Display user dashboard
+    website.display_dashboard(logged_in_user)
+    
+    # Display admin panel
+    website.show_admin_panel(admin)
+
+# Main Program
+if __name__ == "__main__":
+    # Code to handle user interactions, input validation, and calling appropriate methods
+    pass
+import tkinter as tk
+from PIL import Image, ImageTk
+
+# Create the main window
+window = tk.Tk()
+
+# Load an image from file
+image = Image.open('path/to/your/image.jpg')
+photo = ImageTk.PhotoImage(image)
+
+# Display the image in a label
+label = tk.Label(window, image=photo)
+label.pack()
+
+# Run the Tkinter event loop
+window.mainloop()
+
+import tkinter as tk
+from tkinter import ttk
+import pandas as pd
+
+# Create a sample DataFrame
+data = {'Name': ['John', 'Alice', 'Bob'],
+        'Age': [25, 30, 35],
+        'Role': ['Security Guard', 'Supervisor', 'Manager']}
+
+df = pd.DataFrame(data)
+
+# Create the main window
+window = tk.Tk()
+
+# Create a Treeview widget (table)
+tree = ttk.Treeview(window)
+tree['columns'] = tuple(df.columns)
+
+# Add columns to the Treeview
+for col in df.columns:
+    tree.column(col, anchor=tk.CENTER)
+    tree.heading(col, text=col)
+
+# Add data to the Treeview
+for i, row in df.iterrows():
+    tree.insert('', i, values=tuple(row))
+
+# Pack the Treeview widget
+tree.pack()
+
+# Run the Tkinter event loop
+window.mainloop()
+import cv2
+
+# Open a video capture object
+cap = cv2.VideoCapture(0)  # Use 0 for the default camera
+
+while True:
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # Display the frame
+    cv2.imshow('Security Camera Feed', frame)
+
+    # Break the loop if 'q' key is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+import cv2
+import numpy as np
+
+cap = cv2.VideoCapture(0)
+
+# Initialize background subtraction
+fgbg = cv2.createBackgroundSubtractorMOG2()
+
+while True:
+    ret, frame = cap.read()
+
+    # Apply background subtraction
+    fgmask = fgbg.apply(frame)
+
+    # Display the result
+    cv2.imshow('Motion Detection', fgmask)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+import cv2
+
+cap = cv2.VideoCapture(0)
+fgbg = cv2.createBackgroundSubtractorMOG2()
+
+while True:
+    ret, frame = cap.read()
+    fgmask = fgbg.apply(frame)
+
+    # Count non-zero pixels in the foreground mask
+    count = np.count_nonzero(fgmask)
+
+    # Set a threshold for triggering an alert
+    threshold = 5000
+
+    if count > threshold:
+        print("Motion Detected - Security Alert!")
+
+    cv2.imshow('Motion Detection', fgmask)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
